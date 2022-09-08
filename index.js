@@ -8,37 +8,17 @@ const app = new express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.post('/token/:identity', (request, response) => {
-  const identity = request.params.identity;
-  const accessToken = new twilio.jwt.AccessToken(config.twilio.accountSid, config.twilio.apiKey, config.twilio.apiSecret);
-  const chatGrant = new twilio.jwt.AccessToken.ChatGrant({
-    serviceSid: config.twilio.chatServiceSid,
-  });
-  accessToken.addGrant(chatGrant);
-  accessToken.identity = identity;
-  response.set('Content-Type', 'application/json');
-  response.send(JSON.stringify({
-    token: accessToken.toJwt(),
-    identity: identity
-  }));
-})
-
 app.listen(config.port, () => {
-  console.log(`Application started at localhost:${config.port}`);
+  console.log(`Application started at http://localhost:${config.port}`);
 });
 
-
-// ============================================
 // ============================================
 // ====== HANDLE NEW-CONVERSATION HOOK ========
 // ============================================
-// ============================================
 let client = new twilio(config.twilio.accountSid, config.twilio.authToken);
-
 app.post('/chat', (req, res) => {
-  console.log("Received a webhook:", req.body);
   if (req.body.EventType === 'onConversationAdded') {
-    const me = "Tackleton";
+    const me = req.body.identity;
     client.conversations.v1.conversations(req.body.ConversationSid)
       .participants
       .create({
@@ -64,9 +44,9 @@ app.use((error, req, res, next) => {
   next(error)
 })
 
-var ngrokOptions = {
+let ngrokOptions = {
   proto: 'http',
-  addr: config.port
+  addr: config.portNgrok
 };
 
 if (config.ngrokSubdomain) {

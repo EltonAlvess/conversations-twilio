@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ConversationsApp from './ConversationsApp';
+import ConversationsApp from './components/Conversations/ConversationsApp';
 import './assets/App.css';
 import 'antd/dist/antd.css';
 

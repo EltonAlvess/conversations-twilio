@@ -4,25 +4,29 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
-    "@twilio/conversations": "1.2.0",
-    "antd": "^3.26.20",
-    "dotenv": "^10.0.0",
-    "ngrok": "^3.4.0",
-    "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-dropzone": "^10.2.2",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "4.0.1",
+    "@ant-design/compatible": "^1.1.2",
+    "@twilio/conversations": "^2.1.0",
+    "antd": "^4.22.6",
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "ngrok": "^3.4.1",
+    "node-sass": "^7.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.2",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
     "request-promise": "^4.2.6",
-    "twilio": "~3.6.6"
+    "twilio": "~3.80.1"
   },
   "devDependencies": {
     "concurrently": "^3.6.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node index.js\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

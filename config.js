@@ -1,6 +1,6 @@
 try {
   require('dotenv').config();
-} catch (e) { 
+} catch (e) {
   console.error('error loading dotenv', e);
 }
 
@@ -10,8 +10,10 @@ module.exports = {
     authToken: process.env.TWILIO_AUTH_TOKEN,
     apiKey: process.env.TWILIO_API_KEY,
     apiSecret: process.env.TWILIO_API_SECRET,
-    chatServiceSid: process.env.TWILIO_CHAT_SERVICE_SID
+    chatServiceSid: process.env.TWILIO_CHAT_SERVICE_SID,
+    BackendUrl: process.env.MIHMO_BACKEND_URL
   },
-  port: process.env.PORT || 3001,
+  port: process.env.PORT,
+  portNgrok: process.env.PORT_NGROK,
   ngrokSubdomain: process.env.NGROK_SUBDOMAIN
 }
